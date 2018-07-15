@@ -33,7 +33,7 @@ ActionController::Renderers.add :docx do |filename, options|
   content = options.delete(:content) || render_to_string(options)
 
   doc = Htmltoword::Document.create content, file_name, word_template
-  send_data File.read(doc.path), :filename => file_name, :type => Mime::DOCX, :disposition => disposition
+  send_data File.read(doc.path), :filename => file_name, :type => Mime::DOCX, :disposition => 'attachment'
 end
 
 # For respond_with default
